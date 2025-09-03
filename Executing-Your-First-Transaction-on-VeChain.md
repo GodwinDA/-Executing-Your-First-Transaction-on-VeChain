@@ -73,3 +73,101 @@ JavaScript lets us write scripts and programs on our computer or web apps that t
 node --version
 ```
 If you see a version number, like `v24.7.0`, you’re all set. If not, go to [nodejs.org](https://nodejs.org/) and download the **LTS version**, then follow the installation instructions.
+
+* Creating Your Project Folder
+
+Before we start writing scripts, let’s create a dedicated folder for our VeChain project. In your terminal, run these commands one by one:
+
+```bash
+mkdir my-first-vechain-transaction
+cd my-first-vechain-transaction
+npm init -y
+```
+Here’s the explanation of what each command does:
+
+1. `mkdir my-first-vechain-transaction` → Creates a new folder for your project.
+2. `cd my-first-vechain-transaction` → Moves you into that folder.
+3. `npm init -y` → Initializes the folder as a Node.js project. The `-y` flag automatically accepts all default settings.
+
+After running `npm init -y`, you should see a `package.json` file in your folder. This file keeps track of your project’s settings and dependencies, like the one below.
+```bash
+{
+  "name": "my-first-vechain-transaction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@vechain/sdk-network": "^2.0.4"
+  }
+}
+```
+* Installing VeChain Tools
+
+To interact with the VeChain blockchain, we need some specialized tools. Run the following commands in your project folder:
+
+```bash
+npm install thor-devkit axios
+npm install @vechain/sdk-network
+```
+
+Here’s what each package does:
+
+* **thor-devkit** → Thor DevKit is VeChain’s official toolkit. It helps you build, sign, and manage transactions to interact with the VeChainThor blockchain. Users can construct transactions with various clauses and gas settings. (transactions and ABI)
+
+* **axios** → A library for making HTTP requests, which we’ll use to communicate with VeChain nodes.
+  
+* **@vechain/sdk-network** → Provides network utilities for connecting to VeChain testnet or mainnet and managing nodes.
+
+With these tools installed, your project is ready to start sending transactions on VeChain.
+
+### Step 2: Connecting to the VeChain Network
+
+Before sending your first transaction, we’ll make sure our project can connect to the VeChain test network. The testnet is a safe environment that mimics the main blockchain, but uses test tokens instead of real VET. This way, you can experiment without risking real funds.
+
+Create a new file called `VeChain.js` in your project folder and add the following code:
+
+```javascript
+const axios = require('axios');
+
+async function main() {
+    // Connect to VeChain's test network
+    const url = 'https://testnet.vechain.org';
+    
+    // Request information about the latest block
+    const response = await axios.get(`${url}/blocks/best`);
+    
+    console.log('Connected to VeChain!');
+    console.log('Latest block:', response.data.number);
+    console.log('Block ID:', response.data.id);
+}
+
+main();
+```
+What This Code Does
+
+First, we import **axios**, a library that lets our script make HTTP requests to the VeChain test network. Then, we define an asynchronous function called `main()`. Using `async` here is important because the network takes some time to respond, and we don’t want our program to freeze while waiting.
+
+Inside the function, we set the URL for VeChain’s test network (`https://testnet.vechain.org`) and ask the network for information about the latest block using `axios.get()`. If the request succeeds, the script prints a confirmation message, the latest block number, and the block ID.
+
+Run the file in your terminal using the command below:
+
+```bash
+node VeChain.js
+```
+
+If everything is working, you should see output similar to this:
+
+```
+Connected to VeChain!
+Latest block: 22680669
+Block ID: 0x015a145d1c3afc304fd5e7a4e467afe0c41544de15be5fa93b7083486bfa342f
+```
+
+This confirms that your project is successfully communicating with the VeChain test network.
