@@ -383,10 +383,6 @@ View at: https://explore-testnet.vechain.org/transactions/0x6a7c24b0253caafe4225
 
 Click the **explorer link** to see your transaction on the blockchain!.
 
-Here’s a polished, beginner-friendly version of your **checking final balance** section in narrative style:
-
----
-
 ### Step 6: Checking Your Final Balance
 
 After sending your first transaction, it’s important to **verify that your balance updated correctly**. Let’s check that 10 VET was sent from your wallet.
