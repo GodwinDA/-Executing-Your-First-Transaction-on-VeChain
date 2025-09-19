@@ -229,7 +229,7 @@ main();
 
 This code does several things all at once: it creates a wallet, builds a transaction, signs it, and sends it to the VeChain test network.
 
-* First, we define a **private key** and derive the corresponding **public key** and **address**. This gives us a wallet we can use to send transactions. The private key is like the key to your house, and the address is like your home’s mailing address—anyone can send tokens to it, but only you can spend them.
+* First, we define a **private key** and derive the corresponding **public key** and **address**. This gives us a wallet we can use to send transactions.
 
 * Next, we specify a **recipient address**. In this tutorial, it’s a test address, so we can safely experiment. Before creating the transaction, we fetch the **latest block** from the VeChain test network. This is necessary because each transaction references a recent block to ensure it’s valid and prevents replay attacks.
 
@@ -253,7 +253,7 @@ Balance: 0x0 wei
 
 The balance shows `0x0` (zero in hexadecimal) because this is a new, empty wallet.
 
-> In real applications, you would **never** display or store your private key like this. Think of your private key as the key to your house—anyone with it can take everything inside. For this tutorial, using test money, it’s safe to display. But with real funds, you must keep your private key extremely secure.
+> In real applications, you would **never** display or store your private key like this. Think of your private key as the key to your house, anyone with it can take everything inside. For this tutorial, using test money, it’s safe to display. But with real funds, you must keep your private key extremely secure.
 
 Right now, our code creates a **new wallet every time** it runs. In most cases, you’ll want to use the **same wallet** so you can track your balance and transaction history. To do this, we simply save the private key and reuse it in our script.
 
