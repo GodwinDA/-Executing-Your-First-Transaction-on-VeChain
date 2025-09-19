@@ -425,7 +425,8 @@ If your transaction fails, here are the most common reasons:
 * Invalid address or private key: VeChain addresses must be exactly 42 characters long (including the 0x prefix). If you type an address wrong, the transaction will fail.
   
 * Expired transaction: If the network is busy and your transaction isn't processed within 32 blocks, it expires. Simply try again with a new transaction.
-Wrong network: Make sure you're using the testnet URL for testing. The mainnet URL is different and uses real money.
+  
+* Wrong network: Make sure you're using the testnet URL for testing. The mainnet URL is different and uses real money.
 
 # Conclusion
 
